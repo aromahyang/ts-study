@@ -1,0 +1,10 @@
+.grid-container {
+  overflow: hidden;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.grid-row {
+  display: flex;
+  width: 100%;
+}
