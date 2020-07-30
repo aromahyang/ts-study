@@ -9,27 +9,33 @@ const Grid = styled.div`
 	cursor: pointer;
 	border: black 1px solid;
 	${props => `
-		background-color: ${props.player && props.isActive ? props.player === 1 ? 'red' : 'blue' : 'white' }
+		background-color: ${props.player > 0 && props.isActive ? props.player === 1 ? 'red' : 'blue' : 'white' }
 	`}
 `;
 
 function Board(props) {
-    const [gridStates, setGridState] = useState(Array(9).fill(0));
+    let [gridStates, setGridState] = useState(Array(9).fill(0));
 
     let grids: any = [], row: JSX.Element[] = [];
-    const handleClick = (i) => {
-        if(props.player === 1) {
-            props.changePlayer(2);
-        } else {
-            props.changePlayer(1);
-        }
-        console.log(i, props.player);
+    const handleClick = (i: number) => {
+        let currentPlayer: number, currentGrids = [...gridStates];
 
-        setGridState(gridStates[i] = props.player);
+        if(currentGrids[i] !== 0) { return; }
+        
+        if(props.player === 1) {
+            currentPlayer = 2;
+        } else {
+            currentPlayer = 1;
+        }
+        
+        currentGrids[i] = currentPlayer;
+        setGridState(gridStates = [...currentGrids]);
+        props.changePlayer(currentPlayer);
+        console.log(i, currentPlayer, gridStates);
     }
 
 	for(let i = 0 ; i < 9 ; i++) {
-		let grid = (<Grid player={props.player} isActive={gridStates[i] !== 0} onClick={() => handleClick(i)}></Grid>);
+		let grid = (<Grid player={gridStates[i]} isActive={gridStates[i] !== 0} onClick={() => handleClick(i)}></Grid>);
 
 		row.push(grid);
 
