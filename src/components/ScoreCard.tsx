@@ -41,5 +41,5 @@ function ScoreCard({ name, backgroundColor }: ScoreCardProps) {
 }
 
 export default inject(({ store }) => ({
-    changeWinner: store.changeWinner
+    winner: store.winner,
 }))(observer(ScoreCard));

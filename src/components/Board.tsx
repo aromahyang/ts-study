@@ -17,6 +17,21 @@ function Board(props) {
     let [gridStates, setGridState] = useState(Array(9).fill(0));
 
     let grids: any = [], row: JSX.Element[] = [];
+
+	for(let i = 0 ; i < 9 ; i++) {
+		let grid = (<Grid player={gridStates[i]} isActive={gridStates[i] !== 0} onClick={() => {
+            handleClick(i);
+            setTimeout(checkWinner, 500);
+        }} />);
+
+		row.push(grid);
+
+		if(i % 3 === 2) {
+			grids.push(row);
+			row = [];
+		}
+    }
+    
     const handleClick = (i: number) => {
         let currentPlayer: number, currentGrids = [...gridStates];
 
@@ -31,20 +46,40 @@ function Board(props) {
         currentGrids[i] = currentPlayer;
         setGridState(gridStates = [...currentGrids]);
         props.changePlayer(currentPlayer);
-        console.log(i, currentPlayer, gridStates);
     }
 
-	for(let i = 0 ; i < 9 ; i++) {
-		let grid = (<Grid player={gridStates[i]} isActive={gridStates[i] !== 0} onClick={() => handleClick(i)}></Grid>);
+    const checkWinner = () => {
+        let winner = 0;
 
-		row.push(grid);
+        for(let i = 0 ; i < 3 ; i++) {
+            if(gridStates[3*i] !== 0 && gridStates[3*i] === gridStates[3*i+1] && gridStates[3*i+1] === gridStates[3*i+2]) {
+                winner = gridStates[3*i];
+            }
 
-		if(i % 3 === 2) {
-			grids.push(row);
-			row = [];
-		}
-	}
-    // console.log(grids)
+            if(gridStates[i] !== 0 && gridStates[i] === gridStates[i+3] && gridStates[i+3] === gridStates[i+6]) {
+                winner = gridStates[i];
+            }
+        }
+
+        if(gridStates[4] !== 0) {
+            if(gridStates[0] === gridStates[4] && gridStates[4] === gridStates[8]) {
+                winner = gridStates[0];
+            }
+
+            if(gridStates[2] === gridStates[4] && gridStates[4] === gridStates[7]) {
+                winner = gridStates[2];
+            }
+        }
+        
+        if(winner) {
+            alert(`Player ${winner} wins!`);
+            clearBaord();
+        }
+    }
+
+    const clearBaord = () => {
+        setGridState(Array(9).fill(0));
+    }
     
     return(
         <div className="grid-container">
@@ -59,8 +94,8 @@ function Board(props) {
     );
 }
 
-// export default Board;
 export default inject(({ store }) => ({
     player: store.player,
-    changePlayer: store.changePlayer
+    changePlayer: store.changePlayer,
+    changeWinner: store.changeWinner,
 }))(observer(Board));

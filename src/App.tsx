@@ -17,7 +17,6 @@ function App(props) {
 	);
 }
 
-// export default App;
 export default inject(({ store }) => ({
 	player: store.player,
 }))(observer(App));

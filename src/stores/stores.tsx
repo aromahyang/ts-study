@@ -1,5 +1,4 @@
 import { decorate, observable, action } from 'mobx';
-import { act } from '@testing-library/react';
 
 export default class Stores {
     player = 0;
