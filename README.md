@@ -19,10 +19,10 @@ React, TypeScript, MobX, Styled-component
 
 ### 스크린샷
 
-![01](/screenshots/01-처음.png)
-![02](/screenshots/02-플레이어1이김.png)
-![03](/screenshots/03-다음턴.png)
-![04](/screenshots/04-비길경우.png)
+![01](/screenshots/01-first.png)
+![02](/screenshots/02-player1_wins.png)
+![03](/screenshots/03-next_turn.png)
+![04](/screenshots/04-case_drawn.png)
 
 
 ### 기타
