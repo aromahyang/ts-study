@@ -53,24 +53,20 @@ function Board(props) {
 
         for(let i = 0 ; i < 3 ; i++) {
             if(gridStates[3*i] !== 0 && gridStates[3*i] === gridStates[3*i+1] && gridStates[3*i+1] === gridStates[3*i+2]) {
-                console.log('here1')
                 winner = gridStates[3*i];
             }
 
             if(gridStates[i] !== 0 && gridStates[i] === gridStates[i+3] && gridStates[i+3] === gridStates[i+6]) {
-                console.log('here2')
                 winner = gridStates[i];
             }
         }
 
         if(gridStates[4] !== 0) {
             if(gridStates[0] === gridStates[4] && gridStates[4] === gridStates[8]) {
-                console.log('here3')
                 winner = gridStates[0];
             }
 
             if(gridStates[2] === gridStates[4] && gridStates[4] === gridStates[6]) {
-                console.log('here4')
                 winner = gridStates[2];
             }
         }
