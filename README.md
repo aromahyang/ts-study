@@ -20,9 +20,9 @@ React, TypeScript, MobX, Styled-component
 ### 스크린샷
 
 ![01](/screenshots/01-처음.png)
-![02](/screenshots/02-플레이어1_이김.png)
-![03](/screenshots/03-다음_턴.png)
-![04](/screenshots/04-비길_경우.png)
+![02](/screenshots/02-플레이어1이김.png)
+![03](/screenshots/03-다음턴.png)
+![04](/screenshots/04-비길경우.png)
 
 
 ### 기타
