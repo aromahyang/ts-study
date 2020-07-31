@@ -1,6 +1,7 @@
 .grid-container {
   overflow: hidden;
-  width: 50%;
+  width: 40%;
+  min-width: 240px;
   margin: 0 auto;
 }
 

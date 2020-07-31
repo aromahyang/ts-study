@@ -1,17 +1,29 @@
 ### 목표
 
+아래 기술들을 사용하여 Tic tac toe 게임 만들기
 1. 타입스크립트를 이용해보기
 2. MobX 이용해보기
 3. Function Component 이용해보기
 4. Styled-component 이용해보기
 
+
 ### 기간
 
 2020년 07월 29일 ~ 2020년 07월 31일
 
+
 ### 주요 기술
 
 React, TypeScript, MobX, Styled-component
+
+
+### 스크린샷
+
+![01](/screenshots/01-처음.png)
+![02](/screenshots/02-플레이어1_이김.png)
+![03](/screenshots/03-다음_턴.png)
+![04](/screenshots/04-비길_경우.png)
+
 
 ### 기타
 

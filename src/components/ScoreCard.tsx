@@ -7,7 +7,8 @@ const StyledDiv = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 40%;
+    min-width: 240px;
     height: 100px;
     margin: 0 auto;
     background-color: ${props => props.backgroundColor}
