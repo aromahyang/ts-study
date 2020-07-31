@@ -20,9 +20,13 @@ React, TypeScript, MobX, Styled-component
 ### 스크린샷
 
 ![01](/screenshots/01-first.png)
+↑ 처음 시작 화면
 ![02](/screenshots/02-player1_wins.png)
+↑ 플레이어1 이겼을 때 화면
 ![03](/screenshots/03-next_turn.png)
+↑ 플레이어1이 이긴 다음 플레이어2가 게임을 시작한 화면
 ![04](/screenshots/04-case_drawn.png)
+↑ 비겼을 때 화면
 
 
 ### 기타
