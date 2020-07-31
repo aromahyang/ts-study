@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
 import ScoreCard from './components/ScoreCard';
 import Board from './components/Board';

@@ -15,7 +15,7 @@ const Grid = styled.div`
 
 function Board(props) {
     let [gridStates, setGridState] = useState(Array(9).fill(0));
-
+    
     let grids: any = [], row: JSX.Element[] = [];
 
 	for(let i = 0 ; i < 9 ; i++) {
@@ -53,27 +53,41 @@ function Board(props) {
 
         for(let i = 0 ; i < 3 ; i++) {
             if(gridStates[3*i] !== 0 && gridStates[3*i] === gridStates[3*i+1] && gridStates[3*i+1] === gridStates[3*i+2]) {
+                console.log('here1')
                 winner = gridStates[3*i];
             }
 
             if(gridStates[i] !== 0 && gridStates[i] === gridStates[i+3] && gridStates[i+3] === gridStates[i+6]) {
+                console.log('here2')
                 winner = gridStates[i];
             }
         }
 
         if(gridStates[4] !== 0) {
             if(gridStates[0] === gridStates[4] && gridStates[4] === gridStates[8]) {
+                console.log('here3')
                 winner = gridStates[0];
             }
 
-            if(gridStates[2] === gridStates[4] && gridStates[4] === gridStates[7]) {
+            if(gridStates[2] === gridStates[4] && gridStates[4] === gridStates[6]) {
+                console.log('here4')
                 winner = gridStates[2];
             }
         }
         
         if(winner) {
+            console.log(gridStates);
             alert(`Player ${winner} wins!`);
+            props.changeWinner(winner);
+            props.changeScore(winner);
             clearBaord();
+            return;
+        }
+
+        if(gridStates.find(e => e === 0) === undefined) {
+            alert('Draw!');
+            clearBaord();
+            return;
         }
     }
 
@@ -96,6 +110,8 @@ function Board(props) {
 
 export default inject(({ store }) => ({
     player: store.player,
+    winner: store.winner,
     changePlayer: store.changePlayer,
     changeWinner: store.changeWinner,
+    changeScore: store.changeScore,
 }))(observer(Board));

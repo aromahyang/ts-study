@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
 import './Board.css';
@@ -20,21 +20,14 @@ const StyledParagraph = styled.p`
     line-height: 1.6;
 `;
 
-type ScoreCardProps = {
-    name: string;
-    backgroundColor: string;
-}
-
-function ScoreCard({ name, backgroundColor }: ScoreCardProps) {
-    const [score, setScore] = useState(0);
-
-    const increaseScore = () => setScore(score + 1);
+function ScoreCard(props) {
+    const playerNumber = Number(props.name[props.name.length-1]);
 
     return(
-        <StyledDiv className="card-container" backgroundColor={backgroundColor}>
+        <StyledDiv className="card-container" backgroundColor={props.backgroundColor}>
             <StyledParagraph className="card-name">
-                {name}<br/>
-                {score}
+                {props.name}<br/>
+                {props.scores[playerNumber-1]}
             </StyledParagraph>
         </StyledDiv>
     );
@@ -42,4 +35,5 @@ function ScoreCard({ name, backgroundColor }: ScoreCardProps) {
 
 export default inject(({ store }) => ({
     winner: store.winner,
+    scores: store.scores,
 }))(observer(ScoreCard));
